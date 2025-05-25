@@ -9,7 +9,7 @@ import json
 from flask import Response
 
 app = Flask(__name__)
-app.secret_key = "supersecretkey"  # Flash mesajlar için gereklidir
+app.secret_key = "supersecretkey"  
 
 DATABASE = "veritabani.db"
 
@@ -35,7 +35,7 @@ def login():
         user = db.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
         if user and check_password_hash(user["password"], password):
             session.clear()
-            session['user_id'] = user['id']  # Burada user_id sessiona kaydediliyor
+            session['user_id'] = user['id']  
             flash("Giriş başarılı!", "success")
             return redirect(url_for("dashboard"))
         else:
@@ -98,7 +98,7 @@ def ziyaretci_ekle():
         from datetime import date
         tarih = date.today().strftime('%Y-%m-%d')
 
-        user_id = session.get('user_id', 1)  # Burada session'dan user_id alıyoruz, yoksa 1 olarak default
+        user_id = session.get('user_id', 1)  
 
         db = get_db()
         db.execute(
@@ -115,7 +115,7 @@ def ziyaretci_ekle():
 
 @app.route('/ziyaretci_listesi')
 def ziyaretci_listesi():
-    user_id = session.get('user_id', 1)  # sessiondan alıyoruz
+    user_id = session.get('user_id', 1)  
     db = get_db()
     ziyaretciler = db.execute("SELECT * FROM ziyaretciler WHERE user_id = ? ORDER BY id DESC", (user_id,)).fetchall()
     return render_template('ziyaretci_listesi.html', ziyaretciler=ziyaretciler)
@@ -161,7 +161,7 @@ def giris_kayitlari():
 
 @app.route('/logout', methods=['POST'])
 def logout():
-    session.clear()  # Eğer session kullanıyorsan, temizle
+    session.clear()  
     flash("Başarıyla çıkış yapıldı.", "success")
     return redirect(url_for('login'))
 
@@ -241,7 +241,7 @@ def create_tables():
         )
         """)
         conn.commit()
-    # Bağlantı kapandıktan sonra migrasyonu çalıştır
+   
     with app.app_context():
         migrate_add_user_id()
 
@@ -259,7 +259,7 @@ import json
 from flask import Response
 
 app = Flask(__name__)
-app.secret_key = "supersecretkey"  # Flash mesajlar için gereklidir
+app.secret_key = "supersecretkey" 
 
 DATABASE = "veritabani.db"
 
@@ -285,7 +285,7 @@ def login():
         user = db.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
         if user and check_password_hash(user["password"], password):
             session.clear()
-            session['user_id'] = user['id']  # Burada user_id sessiona kaydediliyor
+            session['user_id'] = user['id']  
             flash("Giriş başarılı!", "success")
             return redirect(url_for("dashboard"))
         else:
@@ -348,7 +348,7 @@ def ziyaretci_ekle():
         from datetime import date
         tarih = date.today().strftime('%Y-%m-%d')
 
-        user_id = session.get('user_id', 1)  # Burada session'dan user_id alıyoruz, yoksa 1 olarak default
+        user_id = session.get('user_id', 1)  
 
         db = get_db()
         db.execute(
@@ -365,7 +365,7 @@ def ziyaretci_ekle():
 
 @app.route('/ziyaretci_listesi')
 def ziyaretci_listesi():
-    user_id = session.get('user_id', 1)  # sessiondan alıyoruz
+    user_id = session.get('user_id', 1)  
     db = get_db()
     ziyaretciler = db.execute("SELECT * FROM ziyaretciler WHERE user_id = ? ORDER BY id DESC", (user_id,)).fetchall()
     return render_template('ziyaretci_listesi.html', ziyaretciler=ziyaretciler)
@@ -411,7 +411,7 @@ def giris_kayitlari():
 
 @app.route('/logout', methods=['POST'])
 def logout():
-    session.clear()  # Eğer session kullanıyorsan, temizle
+    session.clear() 
     flash("Başarıyla çıkış yapıldı.", "success")
     return redirect(url_for('login'))
 
@@ -450,19 +450,19 @@ def veritabani_json():
         "ziyaretciler": [dict(z) for z in ziyaretciler]
     }
     
-    # JSON string oluştur
+
     json_data = json.dumps(data, ensure_ascii=False, indent=2)
     
-    # Dosyaya kaydet
+
     with open("veritabani_json.json", "w", encoding="utf-8") as f:
         f.write(json_data)
     
-    # JSON olarak yanıt dön
+
     return Response(json_data, mimetype='application/json')
 
 def migrate_add_user_id():
     db = get_db()
-    # Sütun var mı kontrol etmek için basit bir sorgu deneyelim
+  
     cursor = db.execute("PRAGMA table_info(ziyaretciler)")
     columns = [col['name'] for col in cursor.fetchall()]
     if 'user_id' not in columns:
@@ -491,12 +491,9 @@ def create_tables():
         )
         """)
         conn.commit()
-    # Bağlantı kapandıktan sonra migrasyonu çalıştır
+   
     with app.app_context():
         migrate_add_user_id()
-
-
-
 
 
 if __name__ == "__main__":

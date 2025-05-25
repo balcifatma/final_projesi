@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Giriş Kayıtları{% endblock %}
+
+{% block content %}
+<div class="border border-success rounded p-4 shadow-sm bg-light">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-success">Giriş Kayıtları</h2>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-success">Ana Sayfaya Dön</a>
+  </div>
+
+  <form method="GET" class="mb-4 d-flex" style="max-width: 400px;">
+    <input type="text" name="query" class="form-control me-2" placeholder="Ziyaretçi adı ara" value="{{ request.args.get('query', '') }}">
+    <button type="submit" class="btn btn-success">Ara</button>
+  </form>
+
+  <table class="table table-bordered table-hover align-middle">
+    <thead class="table-success text-center">
+      <tr>
+        <th>Kullanıcı</th>
+        <th>Tarih</th>
+        <th>İşlem</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if kayitlar %}
+        {% for kayit in kayitlar %}
+        <tr>
+          <td>{{ kayit['ad_soyad'] }}</td>
+          <td>{{ kayit['tarih'] }}</td>
+          <td>{{ kayit['giris_saati'] }} - {{ kayit['cikis_saati'] or 'Henüz çıkış yok' }}</td>
+        </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="3" class="text-center fst-italic">Kayıt bulunamadı.</td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

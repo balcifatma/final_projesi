@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Yönetim Paneli{% endblock %}
+
+{% block content %}
+<h2 class="text-success mb-3">Hoş Geldiniz!</h2>
+<p>Aşağıdan işlemlerinizi seçin:</p>
+
+<div class="list-group mb-4">
+  <a href="{{ url_for('ziyaretci_listesi') }}" class="list-group-item list-group-item-action list-group-item-success">Ziyaretçi Listesi</a>
+  <a href="{{ url_for('ziyaretci_ekle') }}" class="list-group-item list-group-item-action list-group-item-success">Yeni Ziyaretçi Ekle</a>
+  <a href="{{ url_for('giris_kayitlari') }}" class="list-group-item list-group-item-action list-group-item-success">Giriş Kayıtları</a>
+</div>
+
+<!-- Bilgi kartları -->
+<div class="row">
+  <div class="col-md-4">
+    <div class="card border-success mb-3">
+      <div class="card-header bg-success text-white">Toplam Ziyaretçi Sayısı</div>
+      <div class="card-body">
+        <h3 class="card-title">{{ toplam_ziyaretci or 0 }}</h3>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-8">
+    <div class="card border-success mb-3">
+      <div class="card-header bg-success text-white">Son Ziyaretçi Kaydı</div>
+      <div class="card-body">
+        {% if son_ziyaretci %}
+          <p><strong>Ad Soyad:</strong> {{ son_ziyaretci['ad_soyad'] }}</p>
+          <p><strong>Tarih:</strong> {{ son_ziyaretci['tarih'] }}</p>
+          <p><strong>Giriş Saati:</strong> {{ son_ziyaretci['giris_saati'] }}</p>
+          <p><strong>Çıkış Saati:</strong> {{ son_ziyaretci['cikis_saati'] or 'Henüz çıkış yapılmadı' }}</p>
+        {% else %}
+          <p>Henüz ziyaretçi kaydı yok.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Çıkış butonu -->
+<form action="{{ url_for('logout') }}" method="post" class="mt-4">
+  <button type="submit" class="btn btn-danger">Çıkış Yap</button>
+</form>
+{% endblock %}

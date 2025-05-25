@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Ziyaretçi Listesi{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-center text-success">Ziyaretçi Listesi</h1>
+
+<table class="table table-striped table-hover table-bordered align-middle">
+  <thead class="table-success">
+    <tr>
+      <th>ID</th>
+      <th>Ad Soyad</th>
+      <th>Tarih</th>
+      <th>Giriş Saati</th>
+      <th>Çıkış Saati</th>
+      <th>İşlem</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if ziyaretciler %}
+      {% for ziyaretci in ziyaretciler %}
+      <tr>
+        <td>{{ ziyaretci['id'] }}</td>
+        <td>{{ ziyaretci['ad_soyad'] }}</td>
+        <td>{{ ziyaretci['tarih'] }}</td>
+        <td>{{ ziyaretci['giris_saati'] }}</td>
+        <td>{{ ziyaretci['cikis_saati'] or '-' }}</td>
+        <td>
+          <a href="{{ url_for('ziyaretci_sil', ziyaretci_id=ziyaretci['id']) }}"
+             class="btn btn-sm btn-danger"
+             onclick="return confirm('Bu ziyaretçiyi silmek istediğinize emin misiniz?');">
+            Sil
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    {% else %}
+      <tr>
+        <td colspan="6" class="text-center fst-italic">Kayıtlı ziyaretçi yok.</td>
+      </tr>
+    {% endif %}
+  </tbody>
+</table>
+
+<a href="{{ url_for('ziyaretci_ekle') }}" class="btn btn-success mt-3">Yeni Ziyaretçi Ekle</a>
+<a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary mt-3 ms-2">Ana Sayfaya Dön</a>
+{% endblock %}

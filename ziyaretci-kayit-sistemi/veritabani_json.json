@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": 4,
+      "email": "admin@example.com"
+    },
+    {
+      "id": 2,
+      "email": "deneme@deneme.com"
+    },
+    {
+      "id": 3,
+      "email": "fatma@gmail.com"
+    },
+    {
+      "id": 1,
+      "email": "fatmabalci@gmail.com"
+    },
+    {
+      "id": 5,
+      "email": "umut@gmail.com"
+    }
+  ],
+  "ziyaretciler": [
+    {
+      "id": 4,
+      "ad_soyad": "fatma balci",
+      "tarih": "2025-05-20",
+      "giris_saati": "10:31",
+      "cikis_saati": "10:32",
+      "user_id": 1
+    },
+    {
+      "id": 6,
+      "ad_soyad": "deneme kullanıcı",
+      "tarih": "2025-05-20",
+      "giris_saati": "13:59",
+      "cikis_saati": "15:01",
+      "user_id": 1
+    },
+    {
+      "id": 7,
+      "ad_soyad": "fatma balci",
+      "tarih": "2025-05-25",
+      "giris_saati": "06:04",
+      "cikis_saati": "09:04",
+      "user_id": 3
+    }
+  ]
+}

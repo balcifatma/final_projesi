@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Ziyaretçi Ekle{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-center text-success">Yeni Ziyaretçi Ekle</h1>
+
+<form method="post" class="mx-auto" style="max-width: 480px;">
+  <div class="mb-3">
+    <label for="ad_soyad" class="form-label">Ad Soyad</label>
+    <input type="text" id="ad_soyad" class="form-control" name="ad_soyad" required>
+  </div>
+  <div class="mb-3">
+    <label for="giris_saati" class="form-label">Giriş Saati</label>
+    <input type="time" id="giris_saati" class="form-control" name="giris_saati" required>
+  </div>
+  <div class="mb-3">
+    <label for="cikis_saati" class="form-label">Çıkış Saati</label>
+    <input type="time" id="cikis_saati" class="form-control" name="cikis_saati">
+  </div>
+  <button type="submit" class="btn btn-primary w-100">Kaydet</button>
+</form>
+
+<div class="mt-3 text-center">
+  <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary mt-3 ms-2">Ana Sayfaya Dön</a>
+</div>
+{% endblock %}

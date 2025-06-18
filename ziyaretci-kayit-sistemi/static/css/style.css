@@ -1,6 +1,6 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #e6f4ea; /* Hafif yeşil ton arka plan */
+  background: #e6f4ea; 
   color: #2c3e50;
   margin: 0;
   padding: 0;
@@ -10,23 +10,23 @@ body {
   max-width: 900px;
   margin: 40px auto;
   padding: 30px 40px;
-  background: #f0faf4; /* Açık yeşil-beyaz ton */
-  box-shadow: 0 4px 12px rgba(34, 139, 34, 0.25); /* yeşil gölge */
+  background: #f0faf4; 
+  box-shadow: 0 4px 12px rgba(34, 139, 34, 0.25); 
   border-radius: 10px;
-  border: 2px solid #4CAF50; /* Canlı yeşil çerçeve */
+  border: 2px solid #4CAF50; 
 }
 
 h1, h2 {
   text-align: center;
   margin-bottom: 35px;
-  color: #2e7d32; /* koyu yeşil başlık rengi */
+  color: #2e7d32; 
   text-shadow: 1px 1px 3px #a5d6a7;
 }
 
 table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 8px; /* Satırlar arasında boşluk */
+  border-spacing: 0 8px; 
   font-size: 16px;
 }
 
@@ -36,7 +36,7 @@ th, td {
 }
 
 th {
-  background-color: #388e3c; /* koyu yeşil başlık */
+  background-color: #388e3c; 
   color: white;
   font-weight: 700;
   border-radius: 8px 8px 0 0;
@@ -44,14 +44,14 @@ th {
 }
 
 tbody tr {
-  background: #a5d6a7; /* açık yeşil satır rengi */
+  background: #a5d6a7; 
   border-radius: 8px;
   box-shadow: 0 3px 8px rgba(101, 163, 101, 0.3);
   transition: background-color 0.3s ease;
 }
 
 tbody tr:hover {
-  background: #81c784; /* Hoverda biraz daha koyu yeşil */
+  background: #81c784; 
   cursor: pointer;
   box-shadow: 0 6px 15px rgba(56, 142, 60, 0.7);
 }
@@ -105,7 +105,7 @@ a:hover {
   border: 1px solid #f5c6cb;
 }
 
-/* Form ve butonlar için (login, register vb) */
+
 
 form {
   display: flex;
